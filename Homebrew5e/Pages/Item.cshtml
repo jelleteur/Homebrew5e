@@ -1,0 +1,18 @@
+﻿@page
+@model Homebrew5e.App.Pages.ItemModel
+@{
+}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+    </tr>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>

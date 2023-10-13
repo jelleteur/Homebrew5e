@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Homebrew5e.Core\Homebrew5e.Core.csproj" />
+  </ItemGroup>
+
 </Project>
