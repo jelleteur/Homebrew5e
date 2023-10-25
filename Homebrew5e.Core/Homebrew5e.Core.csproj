@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Homebrew5e.Data\Homebrew5e.Data.csproj" />
+  </ItemGroup>
+
 </Project>
