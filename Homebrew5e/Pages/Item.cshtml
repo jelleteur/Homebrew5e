@@ -3,16 +3,28 @@
 @{
 }
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Value</th>
-    </tr>
-    @foreach (var item in Model.Items)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Value</td>
-        </tr>
-    }
-</table>
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Homebrew5e.styles.css" asp-append-version="true" />
+</head>
+<body>
+	<table class="ItemListTable">
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+		@foreach (var item in Model.Items)
+		{
+			
+				<tr class="ItemList">
+					<td>@item.GetItemName()</td>
+					<td>@item.GetItemDescription()</td>
+				</tr>
+			
+		}
+	</table>
+</body>

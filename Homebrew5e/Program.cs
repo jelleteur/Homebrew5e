@@ -1,7 +1,13 @@
+using Homebrew5e.Core;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<Item>();
 
 var app = builder.Build();
 
@@ -23,3 +29,4 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+

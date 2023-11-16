@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.App", "Homebrew5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.Core", "Homebrew5e.Core\Homebrew5e.Core.csproj", "{9CC24456-9413-4CC1-B9BD-A54CC98F7FD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.Data", "Homebrew5e.Data\Homebrew5e.Data.csproj", "{0973AC73-A446-4AFD-B3EB-87ED9537E8DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.DAL", "Homebrew5e.Data\Homebrew5e.DAL.csproj", "{0973AC73-A446-4AFD-B3EB-87ED9537E8DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{E2DBFADA-8259-4A58-B663-035948CCEC43}"
+	ProjectSection(SolutionItems) = preProject
+		Item.txt = Item.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

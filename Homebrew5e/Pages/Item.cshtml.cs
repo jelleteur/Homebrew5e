@@ -6,18 +6,18 @@ namespace Homebrew5e.App.Pages
 {
     public class ItemModel : PageModel
     {
-        private readonly ItemService _itemService;
+        private readonly Item _item;
 
-        public ItemModel(ItemService itemService)
+        public ItemModel(Item item)
         {
-            _itemService = itemService;
+            _item = item;
         }
 
         public List<Item> Items { get; private set; }
 
         public void OnGet()
         {
-            Items = _itemService.GetAllItems();
+            Items = _item.GetAllItems();
         }
     }
 }

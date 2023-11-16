@@ -1,0 +1,4 @@
+Sword, +2
+Iron, -1
+Cape, +1 DEX
+Bow, +2 DEX
