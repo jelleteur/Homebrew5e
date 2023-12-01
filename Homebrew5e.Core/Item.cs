@@ -52,8 +52,6 @@ namespace Homebrew5e.Core
                 //voeg items toe aan lijst
                 items.Add(new Item(fields[0], fields[1]));
             }
-
-            return items;
         }
     }
 }
