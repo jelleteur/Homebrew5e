@@ -17,8 +17,7 @@ namespace Homebrew5e.DAL
         //string connectionstring
         public ItemRepository()
         {
-            //_connectionstring = connectionstring;
-            _connectionstring = "server=127.0.0.1;port=3306;database=test;uid=root;pwd=password;";
+            _connectionstring = "server=127.0.0.1;port=3306;database=homebrew5e;uid=root;pwd=password;";
         }
         public List<ItemDTO> GetAllItems()
         {
@@ -63,11 +62,9 @@ namespace Homebrew5e.DAL
             command.Parameters.AddWithValue("@Name", itemDTO.Name);
             command.Parameters.AddWithValue("@Attribute", itemDTO.Attribute);
             command.Parameters.AddWithValue("@Description", itemDTO.Description);
-
             command.Parameters.AddWithValue("@UserID", 2);
 
             command.ExecuteNonQuery();
-            //
 
             connection.Close();
 
