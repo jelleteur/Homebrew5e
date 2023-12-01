@@ -21,8 +21,17 @@ body {
     margin-bottom: 60px;
 }
 
-.ItemList {
+.ItemList1 {
     border: 2px solid black;
+    border-bottom: 0px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.ItemList2 {
+    border: 2px solid black;
+    border-top: 0px ;
     margin: auto;
     padding: 20px;
     text-align: center;

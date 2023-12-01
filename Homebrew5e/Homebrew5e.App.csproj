@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Homebrew5e.Core\Homebrew5e.Core.csproj" />
+    <ProjectReference Include="..\Homebrew5e.Data\Homebrew5e.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\ItemPages\" />
   </ItemGroup>
 
 </Project>

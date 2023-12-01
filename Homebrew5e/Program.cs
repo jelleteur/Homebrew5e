@@ -1,4 +1,7 @@
 using Homebrew5e.Core;
+using Homebrew5e.Core.Collections;
+using Homebrew5e.Core.Interfaces;
+using Homebrew5e.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<Item>();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
+builder.Services.AddScoped<ItemCollection>();
 
 var app = builder.Build();
 

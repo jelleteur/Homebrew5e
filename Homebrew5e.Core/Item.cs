@@ -1,58 +1,54 @@
-﻿using Homebrew5e.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Homebrew5e.Core.DTOs;
+using Homebrew5e.Core.Interfaces;
+using Homebrew5e.Core.Collections;
+using System.Net.Http.Headers;
 
 namespace Homebrew5e.Core
 {
-    public class Item
-    {
-        private string Name { get; set; }
-        private string Description { get; set; }
-        private string Attribute { get; set; }
+	public class Item
+	{
+		private int ID { get; set; }
+		private string Name { get; set; }
+		private string Description { get; set; }
+		private string Attribute { get; set; }
 
-        public Item() { }
-        public Item(string name, string description)
-        {
-            Name = name;
-            Description = description;
-        }
+		
+		public Item() { }
+		public Item(string name, string description, string attribute)
+		{
+			Name = name;
+			Description = description;
+			Attribute = attribute;
+		}
 
-        public string GetItemName()
-        {
-            return Name;
-        }
+		internal Item(ItemDTO dto)
+		{
+			ID = dto.ID;
+			Name = dto.Name;
+			Description = dto.Description;
+			Attribute = dto.Attribute;
+		}
 
-        public string GetItemDescription()
-        {
-            return Description;
-        }
+		public int GetID()
+		{
+			return ID;
+		}
 
-        public string GetItemAttribute()
-        {
-            return Attribute;
-        }
+		public string GetName()
+		{
+			return Name;
+		}
 
-        public List<Item> GetAllItems()
-        {
-            string FilePath = "..\\Item.txt";
-            List<Item> items = new List<Item>();
+		public string GetDescription()
+		{
+			return Description;
+		}
 
+		public string GetAttribute()
+		{
+			return Attribute;
+		}
 
-            //lees textfile
-            string[] lines = File.ReadAllLines(FilePath);
-
-            foreach (var line in lines)
-            {
-                //split lijnen tekst
-                string[] fields = line.Split(',');
-
-                //voeg items toe aan lijst
-                items.Add(new Item(fields[0], fields[1]));
-            }
-        }
-    }
+		
+	}
 }
-

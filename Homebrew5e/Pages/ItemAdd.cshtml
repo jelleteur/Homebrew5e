@@ -1,0 +1,44 @@
+﻿@page
+@using Homebrew5e.App.Pages;
+@using Homebrew5e.Core.Enums;
+@model ItemAddModel
+@{
+}
+
+<h2>Create your item.</h2>
+
+<form method="post">
+    <!-- Line 1: Single-line text input -->
+    <div>
+        <label asp-for="itemName">Name: </label>
+        <input asp-for="itemName" />
+    </div>
+
+    <!-- Line 2: Two inputs (String and Dropdown) -->
+    <div>
+        <label asp-for="itemAttribute">Value: </label>
+        <input asp-for="itemAttribute"/>
+
+        <label asp-for="itemAttributeEnum">Stat: </label>
+        <select asp-for="itemAttributeEnum">
+            @foreach (int enumValue in Enum.GetValues(typeof(_Attribute)))
+            {
+                string enumName = Enum.GetName(typeof(_Attribute), enumValue);
+                <option value="@enumName">@enumName</option>
+            }
+        </select>
+    </div>
+
+    <!-- Line 3: Multi-line text input -->
+    <div>
+        <label asp-for="itemDescription">Description: </label>
+        <textarea asp-for="itemDescription" rows="4"></textarea>
+    </div>
+</form>
+
+
+<div class="text-center">
+	<form method="post">
+		<button type="submit">Create Item</button>
+	</form>
+</div>

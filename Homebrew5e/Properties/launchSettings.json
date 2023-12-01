@@ -32,6 +32,9 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "ConnectionStrings": {
+      "DefaultConnection": "zet hier je connectionstring"
     }
   }
 }
