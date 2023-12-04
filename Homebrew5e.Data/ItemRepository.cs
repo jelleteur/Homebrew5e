@@ -26,24 +26,25 @@ namespace Homebrew5e.DAL
             MySqlConnection connection = new MySqlConnection(_connectionstring);
             connection.Open();
 
-            string query = "SELECT ID, Name, Attribute, Description FROM Homebrew5e.Item";
+            string query = "SELECT ID, UserID, Name, Attribute, Description FROM Homebrew5e.Item";
 
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
-            {
-                while (reader.Read())
-                {
-                    ItemDTO item = new ItemDTO
-                    {
-                        ID = reader.GetInt32("ID"),
-                        Name = reader.GetString("Name"),
-                        Attribute = reader.GetString("Attribute"),
-                        Description = reader.GetString("Description")
-                    };
 
-                    itemDTOs.Add(item);
-                }
+            while (reader.Read())
+            {
+                ItemDTO item = new ItemDTO
+                {
+                    ID = reader.GetInt32("ID"),
+                    UserID = reader.GetInt32("UserID"),
+                    Name = reader.GetString("Name"),
+                    Attribute = reader.GetString("Attribute"),
+                    Description = reader.GetString("Description")
+                };
+
+                itemDTOs.Add(item);
             }
+
 
             connection.Close();
 

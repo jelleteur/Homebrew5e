@@ -17,7 +17,7 @@
     <!-- Line 2: Two inputs (String and Dropdown) -->
     <div>
         <label asp-for="itemAttribute">Value: </label>
-        <input asp-for="itemAttribute"/>
+        <input asp-for="itemAttribute" />
 
         <label asp-for="itemAttributeEnum">Stat: </label>
         <select asp-for="itemAttributeEnum">
@@ -34,11 +34,9 @@
         <label asp-for="itemDescription">Description: </label>
         <textarea asp-for="itemDescription" rows="4"></textarea>
     </div>
+
+    <!-- Line 4: Submit button -->
+    <div class="text-center">
+        <button type="submit">Create Item</button>
+    </div>
 </form>
-
-
-<div class="text-center">
-	<form method="post">
-		<button type="submit">Create Item</button>
-	</form>
-</div>

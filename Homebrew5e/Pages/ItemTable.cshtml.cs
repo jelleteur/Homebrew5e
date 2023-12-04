@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Homebrew5e.App.Pages
 {
-    public class ItemCollectionModel : PageModel
+    public class ItemTableModel : PageModel
     {
         
         private readonly ItemCollection _itemCollection;
 
-        public ItemCollectionModel(ItemCollection itemCollection)
+        public ItemTableModel(ItemCollection itemCollection)
         {
             _itemCollection = itemCollection;
 

@@ -11,13 +11,13 @@ namespace Homebrew5e.App.Pages
 {
     public class ItemAddModel : PageModel
     {
-		private readonly ItemCollection _itemCollection;
+        private readonly ItemCollection _itemCollection;
 
-		public ItemAddModel(ItemCollection itemCollection)
-		{
-			_itemCollection = itemCollection;
+        public ItemAddModel(ItemCollection itemCollection)
+        {
+            _itemCollection = itemCollection;
 
-		}
+        }
 
         [BindProperty]
         public string itemName { get; set; }
@@ -31,17 +31,17 @@ namespace Homebrew5e.App.Pages
         [BindProperty]
         public string itemDescription { get; set; }
 
-
-
-        public void OnPost()
+        public IActionResult OnPost()
         {
             ItemDTO newItem = new ItemDTO
             {
                 Name = itemName,
-                Attribute = itemAttribute + itemAttributeEnum.ToString(),
+                Attribute = itemAttribute + " "+ itemAttributeEnum.ToString(),
                 Description = itemDescription
             };
             _itemCollection.CreateItem(newItem);
+            
+            return RedirectToPage("/ItemTable");
         }
     }
 }
