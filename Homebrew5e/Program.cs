@@ -1,6 +1,7 @@
 using Homebrew5e.Core;
 using Homebrew5e.Core.Collections;
 using Homebrew5e.Core.Interfaces;
+using Homebrew5e.Dal;
 using Homebrew5e.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,8 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//gebruik van cookies opzetten
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+	options.Cookie.Name = "Homebrew5e.Session";
+	options.IdleTimeout = TimeSpan.FromMinutes(20);
+});
+
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<ItemCollection>();
+builder.Services.AddScoped<IDnDUserRepository, DnDUserRepository>();
+builder.Services.AddScoped<DnDUserCollection>();
 
 var app = builder.Build();
 

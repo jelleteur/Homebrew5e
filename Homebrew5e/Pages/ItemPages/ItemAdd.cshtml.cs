@@ -7,7 +7,7 @@ using Homebrew5e.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Homebrew5e.App.Pages
+namespace Homebrew5e.App.Pages.ItemPages
 {
     public class ItemAddModel : PageModel
     {
@@ -33,15 +33,22 @@ namespace Homebrew5e.App.Pages
 
         public IActionResult OnPost()
         {
-            ItemDTO newItem = new ItemDTO
+            string name = itemName;
+            string attribute = itemAttribute + " " + itemAttributeEnum.ToString();
+            string description = itemDescription;
+            int falseID = -1;
+            int id;
+
+
+            id = _itemCollection.CreateItemProcess(name, attribute, description);
+            if (id != falseID)
             {
-                Name = itemName,
-                Attribute = itemAttribute + " "+ itemAttributeEnum.ToString(),
-                Description = itemDescription
-            };
-            _itemCollection.CreateItem(newItem);
-            
-            return RedirectToPage("/ItemTable");
+                return Redirect($"/ItemPages/ItemInfo?id={id}");
+            }
+            else
+            {
+                return Redirect($"/Error");
+            }
         }
     }
 }

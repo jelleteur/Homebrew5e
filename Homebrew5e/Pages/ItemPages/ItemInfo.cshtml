@@ -1,0 +1,31 @@
+﻿@page
+@model ItemInfoModel
+@{
+}
+<head>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Homebrew5e.styles.css" asp-append-version="true" />
+</head>
+<body>
+	@if (Model.ItemDetails != null)
+	{
+		<table class="ItemListTable" align="center">
+			<tr>
+				<td>@Model.ItemDetails.GetName()</td>
+			</tr>
+			<tr>
+				<td>@Model.ItemDetails.GetAttribute()</td>
+			</tr>
+			<tr>
+				<td>@Model.ItemDetails.GetDescription()</td>
+			</tr>
+		</table>
+	}
+	else
+	{
+		<p align="center">Item not found or invalid ID.</p>
+	}
+
+</body>
+

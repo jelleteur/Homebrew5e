@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Homebrew5e.Core\Homebrew5e.Core.csproj" />
-    <ProjectReference Include="..\Homebrew5e.Data\Homebrew5e.DAL.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\ItemPages\" />
+    <ProjectReference Include="..\Homebrew5e.Core\Homebrew5e.Core.csproj" />
+    <ProjectReference Include="..\Homebrew5e.Data\Homebrew5e.DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿@page
 @using Homebrew5e.App.Pages;
+@using Homebrew5e.App.Pages.ItemPages;
 @model ItemTableModel
 @{
 }
@@ -13,14 +14,9 @@
 	<link rel="stylesheet" type="text/css" href="~/Homebrew5e.styles.css" asp-append-version="true" />
 </head>
 <body>
-	<button type="submit"><a asp-area="" asp-page="/ItemAdd">Add an item</a></button>
+	<button type="submit"><a asp-area="" asp-page="/ItemPages/ItemAdd">Add an item</a></button>
 
 	<table class="ItemListTable">
-		<tr>
-			<th>Name</th>
-			<th>Value</th>
-
-		</tr>
 		@foreach (var item in Model.Items)
 		{
 
@@ -31,6 +27,12 @@
 			</tr>
 			<tr class="ItemList2">
 				<td>@item.GetDescription()</td>
+				<td>
+					<form method="post">
+						<input type="hidden" asp-for="SelectedItemId" value="@item.GetID()" />
+						<button asp-page-handler="ItemInfoPage">Info</button>
+					</form>
+				</td>
 			</tr>
 		}
 	</table>

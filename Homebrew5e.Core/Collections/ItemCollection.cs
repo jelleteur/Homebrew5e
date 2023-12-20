@@ -1,5 +1,6 @@
 ﻿using Homebrew5e.Core.DTOs;
 using Homebrew5e.Core.Interfaces;
+using Homebrew5e.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,13 @@ namespace Homebrew5e.Core.Collections
             return items;
         }
 
-        public void CreateItem(ItemDTO itemDTO)
+        public int CreateItemProcess(string name, string attribute, string description)
         {
-            _ItemRepository.AddItem(itemDTO);
+            _ItemRepository.AddItem(name, attribute, description);
+
+            int id;
+            id = _ItemRepository.GetAtCreation(name, attribute, description);
+            return id;
         }
     }
 }

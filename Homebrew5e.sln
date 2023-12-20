@@ -9,10 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.Core", "Homebrew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.DAL", "Homebrew5e.Data\Homebrew5e.DAL.csproj", "{0973AC73-A446-4AFD-B3EB-87ED9537E8DB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{E2DBFADA-8259-4A58-B663-035948CCEC43}"
-	ProjectSection(SolutionItems) = preProject
-		Item.txt = Item.txt
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homebrew5e.CoreTest", "CoreTest\Homebrew5e.CoreTest.csproj", "{9C4EAEE8-15D2-4BD9-839D-ADBF87C9B71D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +29,10 @@ Global
 		{0973AC73-A446-4AFD-B3EB-87ED9537E8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0973AC73-A446-4AFD-B3EB-87ED9537E8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0973AC73-A446-4AFD-B3EB-87ED9537E8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C4EAEE8-15D2-4BD9-839D-ADBF87C9B71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4EAEE8-15D2-4BD9-839D-ADBF87C9B71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C4EAEE8-15D2-4BD9-839D-ADBF87C9B71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C4EAEE8-15D2-4BD9-839D-ADBF87C9B71D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
