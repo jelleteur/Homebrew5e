@@ -4,5 +4,17 @@
 }
 
 <body style="align-content: center;">
-
+    <form method="post">
+        <div>
+            <label asp-for="Email">Email: </label>
+            <input asp-for="Email" />
+        </div>
+        <div>
+            <label asp-for="Password">Password: </label>
+            <input asp-for="Password" />
+        </div>
+        <div class="text-center">
+            <button type="submit">Login</button>
+        </div>
+    </form>
 </body>

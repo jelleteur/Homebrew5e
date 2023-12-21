@@ -33,9 +33,9 @@ namespace Homebrew5e.Core.Collections
             return items;
         }
 
-        public int CreateItemProcess(string name, string attribute, string description)
+        public int CreateItemProcess(string name, string attribute, string description, int userID)
         {
-            _ItemRepository.AddItem(name, attribute, description);
+            _ItemRepository.AddItem(name, attribute, description, userID);
 
             int id;
             id = _ItemRepository.GetAtCreation(name, attribute, description);

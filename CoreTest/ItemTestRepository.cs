@@ -10,7 +10,6 @@ namespace Homebrew5e.CoreTest
 {
 	public class ItemTestRepository : IItemRepository
 	{
-		private string _connectionstring;
 		private List<ItemDTO> _items;
 
 		//string connectionstring
@@ -24,16 +23,14 @@ namespace Homebrew5e.CoreTest
 			return _items;
 		}
 
-		public void AddItem(string name, string attribute, string description)
+		public void AddItem(string name, string attribute, string description, int userID)
 		{
-			
+			throw new NotImplementedException();
 		}
 
 		public int GetAtCreation(string name, string attribute, string description)
 		{
-			int IDint = 5;
-
-			return IDint;
+			throw new NotImplementedException();
 		}
 
 		public ItemDTO GetByID(ItemDTO itemDTO)

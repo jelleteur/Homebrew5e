@@ -51,7 +51,7 @@ namespace Homebrew5e.DAL
 			return itemDTOs;
 		}
 
-		public void AddItem(string name, string attribute, string description)
+		public void AddItem(string name, string attribute, string description, int userID)
 		{
 			using (MySqlConnection connection = new MySqlConnection(_connectionstring))
 			{
@@ -64,7 +64,7 @@ namespace Homebrew5e.DAL
 				command.Parameters.AddWithValue("@Name", name);
 				command.Parameters.AddWithValue("@Attribute", attribute);
 				command.Parameters.AddWithValue("@Description", description);
-				command.Parameters.AddWithValue("@UserID", 2);
+				command.Parameters.AddWithValue("@UserID", userID);
 
 				command.ExecuteNonQuery();
 

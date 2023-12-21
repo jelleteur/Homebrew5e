@@ -11,48 +11,52 @@ namespace Homebrew5e.App.Pages.LoginPages
     {
         private DnDUserCollection userCollection;
 
-		[BindProperty]
-		public string? Username { get; set; }
+        [BindProperty]
+        public string? Email { get; set; }
 
-		[BindProperty]
-		public string? Password { get; set; }
+        [BindProperty]
+        public string? Password { get; set; }
 
-		public LoginModel(DnDUserCollection userCollection)
-		{
-			this.userCollection = userCollection;
-		}
-
-		public void OnGet()
+        public LoginModel(DnDUserCollection userCollection)
         {
-
+            this.userCollection = userCollection;
         }
 
-		public IActionResult OnPost()
-		{
-			// Authenticate user
-			int userId = userCollection.LoginUser(Username, Password);
+        public IActionResult OnGet()
+        {
+            string? userCookie = HttpContext.Request.Cookies["Homebrew5e.UserId"];
 
-			if (userId != -1)
-			{
-				// User authenticated, store user ID in session
+            if (userCookie != null)
+            {
+                return RedirectToPage("/UserPages/PrivateItemPage");
+            }
+            else  //geen login cookie
 
-				// Set the user ID cookie
-				Response.Cookies.Append("Homebrew5e.UserId", userId.ToString(), new CookieOptions
-				{
-					// Set cookie expiration if needed
-					Expires = DateTimeOffset.Now.AddMinutes(20),
+            {
+                return Page();
+            }
+        }
 
-					// Other cookie options as needed
-					HttpOnly = true // Anti-JS
-				});
+        public IActionResult OnPost()
+        {
+            int userId = userCollection.LoginUser(Email, Password);
 
-				// Redirect to the user's page or wherever you need to go after successful login
-				return RedirectToPage("/User/UserProfile");
-			}
+            if (userId != -1)
+            {
+                // cookiesetup
+                Response.Cookies.Append("Homebrew5e.UserId", userId.ToString(), new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddMinutes(20),
 
-			// Authentication failed, handle accordingly
-			return Page();
-		}
+                    HttpOnly = true // Anti-JS
+                });
 
-	}
+                return RedirectToPage("/UserPages/PrivateItemPage");
+            }
+
+            //foute login
+            return Page();
+        }
+
+    }
 }

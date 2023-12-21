@@ -36,7 +36,12 @@ namespace CoreTest
 
 			//Assert
 			Assert.Equal(2, items.Count); //list length
-			Assert.True(items[1].GetAttribute() == "+2 Dex"); //attribute assignment
+			Assert.Equal("+2 Dex", items[1].GetAttribute()); //attribute assignment
+		}
+
+		[Fact]
+		public void TestException() {
+		
 		}
 	}
 }

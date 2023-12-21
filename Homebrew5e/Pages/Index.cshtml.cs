@@ -12,9 +12,19 @@ namespace Homebrew5e.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            string? userCookie = HttpContext.Request.Cookies["Homebrew5e.UserId"];
 
+            if (userCookie != null)
+            {
+                return RedirectToPage("/UserPages/PrivateItemPage");
+            }
+            else  //geen login cookie
+
+            {
+                return Page();
+            }
         }
     }
 }

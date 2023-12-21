@@ -63,5 +63,58 @@ namespace Homebrew5e.Dal
 			return id;
 
 		}
-	}
+
+        public bool CheckDuplicate(string email, string username)
+        {
+            string? usernameCheck = null;
+            string? emailCheck = null;
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                string query = "SELECT Username FROM User WHERE Username=@Username";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        usernameCheck = reader.GetString("Username");
+                    }
+                }
+            }
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                string query = "SELECT Email FROM User WHERE Email=@Email";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        emailCheck = reader.GetString("Email");
+                    }
+                }
+            }
+
+            if (emailCheck != null || usernameCheck != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
 }

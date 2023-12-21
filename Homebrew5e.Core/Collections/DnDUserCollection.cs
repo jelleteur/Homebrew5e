@@ -15,7 +15,12 @@ namespace Homebrew5e.Core.Collections
 			UserRepository = repository;
 		}
 
-		public int CreateUser(string username, string password, string email)
+		public bool UserMailDuplicateCheck(string email, string username)
+		{
+			return UserRepository.CheckDuplicate(email, username);
+		}
+
+		public int RegisterUser(string username, string password, string email)
 		{
 			UserRepository.CreateUser(username, password, email);
 			

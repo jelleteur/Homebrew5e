@@ -10,6 +10,8 @@ namespace Homebrew5e.Core.Interfaces
 	{
 		public void CreateUser(string username, string password, string email);
 		public int LoginUser(string email, string password);
+		public bool CheckDuplicate(string email, string username);
 
-	}
+
+    }
 }

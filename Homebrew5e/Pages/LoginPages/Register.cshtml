@@ -2,4 +2,31 @@
 @using Homebrew5e.App.Pages.LoginPages;
 @model RegisterModel
 @{
+    var popupMessage = TempData["PopupMessage"] as string;
 }
+
+@if (!string.IsNullOrEmpty(popupMessage))
+{
+    <div class="popup">
+        <p style="color: red;">@popupMessage</p>
+    </div>
+}
+<body style="align-content: center;">
+    <form method="post">
+        <div>
+            <label asp-for="UserName">Username: </label>
+            <input asp-for="UserName" />
+        </div>
+        <div>
+            <label asp-for="Email">Email: </label>
+            <input asp-for="Email" />
+        </div>
+        <div>
+            <label asp-for="Password">Password: </label>
+            <input asp-for="Password" />
+        </div>
+        <div class="text-center">
+            <button type="submit">Register Account</button>
+        </div>
+    </form>
+</body>
