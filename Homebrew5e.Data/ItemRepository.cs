@@ -57,7 +57,7 @@ namespace Homebrew5e.DAL
 			{
 				connection.Open();
 
-				string query = "INSERT INTO Homebrew5e.Item (Name, Attribute, Description, UserID) VALUES (@Name, @Attribute, @Description, @UserID)";
+				string query = "INSERT INTO Item (Name, Attribute, Description, UserID) VALUES (@Name, @Attribute, @Description, @UserID)";
 
 				MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -81,7 +81,7 @@ namespace Homebrew5e.DAL
 			MySqlConnection connection = new MySqlConnection(_connectionstring);
 			connection.Open();
 
-			string query = "SELECT ID, UserID, Name, Attribute, Description FROM Item WHERE Name=@name AND Attribute=@attribute AND Description=@description";
+			string query = "SELECT ID FROM Item WHERE Name=@name AND Attribute=@attribute AND Description=@description";
 
 			using (MySqlCommand command = new MySqlCommand(query, connection))
 			{
