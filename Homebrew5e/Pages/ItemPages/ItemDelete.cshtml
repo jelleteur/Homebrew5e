@@ -1,0 +1,46 @@
+﻿@page
+@using Homebrew5e.App.Pages.ItemPages;
+@using Homebrew5e.App.Pages;
+@model Homebrew5e.App.Pages.ItemPages.ItemDeleteModel
+@{
+}
+
+<head>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Homebrew5e.styles.css" asp-append-version="true" />
+</head>
+<body>
+	@if (Model.ItemDetails != null)
+	{
+		<table class="ItemListTable" align="center">
+			<tr>
+				<td>@Model.ItemDetails.GetName()</td>
+			</tr>
+			<tr>
+				<td>@Model.ItemDetails.GetAttribute()</td>
+			</tr>
+			<tr>
+				<td>@Model.ItemDetails.GetDescription()</td>
+			</tr>
+		</table>
+		<table class="" align="center">
+			<tr>
+				<td style="color: red; font-style: italic;">Deleting of an item can NOT be undone<td>
+				<td>
+					<form method="post">
+						<input type="hidden" asp-for="SelectedItemId" value="@Model.ItemDetails.GetID()" />
+						<button style="background-color: red;" asp-page-handler="DeleteItem">Delete</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+
+	}
+	else
+	{
+		<p align="center">Item not found or invalid ID.</p>
+	}
+
+</body>
+

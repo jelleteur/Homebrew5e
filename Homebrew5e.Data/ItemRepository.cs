@@ -14,7 +14,6 @@ namespace Homebrew5e.DAL
 	public class ItemRepository : IItemRepository
 	{
 		private string _connectionstring;
-		//string connectionstring
 		public ItemRepository()
 		{
 			_connectionstring = "server=127.0.0.1;port=3306;database=homebrew5e;uid=root;pwd=password;";
@@ -45,7 +44,6 @@ namespace Homebrew5e.DAL
 				itemDTOs.Add(item);
 			}
 
-
 			connection.Close();
 
 			return itemDTOs;
@@ -72,6 +70,41 @@ namespace Homebrew5e.DAL
 			}
 
 
+		}
+
+		public List<ItemDTO> GetByUserID(int userID)
+		{
+			List<ItemDTO> itemDTOs = new List<ItemDTO>();
+
+			using (MySqlConnection connection = new MySqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				string query = "SELECT ID, UserID, Name, Attribute, Description FROM Item WHERE UserID=@userID";
+
+				using (MySqlCommand command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("userID", userID);
+					MySqlDataReader reader = command.ExecuteReader();
+
+					while (reader.Read())
+					{
+						ItemDTO item = new ItemDTO
+						{
+							ID = reader.GetInt32("ID"),
+							UserID = reader.GetInt32("UserID"),
+							Name = reader.GetString("Name"),
+							Attribute = reader.GetString("Attribute"),
+							Description = reader.GetString("Description")
+						};
+
+						itemDTOs.Add(item);
+					}
+				}
+				connection.Close();
+			}
+
+			return itemDTOs;
 		}
 
 		public int GetAtCreation(string name, string attribute, string description)
@@ -128,13 +161,44 @@ namespace Homebrew5e.DAL
 
 			return itemDTO;
 		}
+
+		public void DeleteItem(int itemID)
+		{
+			using (MySqlConnection connection = new MySqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				string query = "DELETE FROM Item WHERE ID = @itemID";
+
+				using (MySqlCommand command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("itemID", itemID);
+					command.ExecuteNonQuery();
+				}
+
+				connection.Close();
+			}
+		}
+
+		public void UpdateItem(string name, string attribute, string description, int itemID)
+		{
+			using (MySqlConnection connection = new MySqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				string query = "UPDATE Item SET Name = @Name, Attribute = @Attribute, Description = @Description WHERE ID = @ItemID";
+
+				MySqlCommand command = new MySqlCommand(query, connection);
+
+				command.Parameters.AddWithValue("@Name", name);
+				command.Parameters.AddWithValue("@Attribute", attribute);
+				command.Parameters.AddWithValue("@Description", description);
+				command.Parameters.AddWithValue("@ItemID", itemID);
+
+				command.ExecuteNonQuery();
+
+				connection.Close();
+			}
+		}
 	}
 }
-
-
-
-/*command.Parameters.AddWithValue("@UserID", itemDTO.UserID);
-
-			command.Parameters.AddWithValue("@Name", "spear");
-			command.Parameters.AddWithValue("@Attribute", "+2 long");
-			command.Parameters.AddWithValue("@Description", "it stabs longer");*/

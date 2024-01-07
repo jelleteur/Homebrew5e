@@ -28,6 +28,11 @@ namespace Homebrew5e.CoreTest
 			throw new NotImplementedException();
 		}
 
+		public List<ItemDTO> GetByUserID(int userID)
+		{
+			throw new NotImplementedException();
+		}
+
 		public int GetAtCreation(string name, string attribute, string description)
 		{
 			throw new NotImplementedException();

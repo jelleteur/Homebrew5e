@@ -1,6 +1,7 @@
 using Homebrew5e.Core;
 using Homebrew5e.Core.Collections;
 using Homebrew5e.Core.Interfaces;
+using Homebrew5e.Core.Models;
 using Homebrew5e.Dal;
 using Homebrew5e.DAL;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +25,8 @@ builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<ItemCollection>();
 builder.Services.AddScoped<IDnDUserRepository, DnDUserRepository>();
 builder.Services.AddScoped<DnDUserCollection>();
+builder.Services.AddScoped<Item>();
+
 
 var app = builder.Build();
 

@@ -1,4 +1,37 @@
 ﻿@page
-@model Homebrew5e.App.Pages.UserPages.PrivateItemPageModel
+@using Homebrew5e.App.Pages.UserPages;
+@using Homebrew5e.App.Pages;
+@model PrivateItemPageModel
 @{
 }
+
+
+<body>
+	<button type="submit"><a asp-area="" asp-page="/ItemPages/ItemAdd">Add an item</a></button>
+
+	<table class="ItemListTable">
+		@foreach (var item in Model.UserItems)
+		{
+
+			<tr class="ItemList1">
+				<td>@item.GetName()</td>
+				<td>@item.GetAttribute()</td>
+
+			</tr>
+			<tr class="ItemList2">
+				<td>
+					<form method="post">
+						<input type="hidden" asp-for="SelectedItemId" value="@item.GetID()" />
+						<button asp-page-handler="ItemInfoPage">Info / Update</button>
+					</form>
+				</td>
+				<td>
+					<form method="post">
+						<input type="hidden" asp-for="SelectedItemId" value="@item.GetID()" />
+						<button style="background-color: red;" asp-page-handler="ItemDelete">Delete</button>
+					</form>
+				</td>
+			</tr>
+		}
+	</table>
+</body>

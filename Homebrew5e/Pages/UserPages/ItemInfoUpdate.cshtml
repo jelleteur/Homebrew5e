@@ -1,0 +1,43 @@
+﻿@page
+@using Homebrew5e.Core.Enums
+@model Homebrew5e.App.Pages.UserPages.ItemInfoUpdateModel
+
+<body>
+    @if (Model.ItemDetails != null)
+    {
+        <form method="post">
+            <div>
+                <label>Name: </label>
+                <input asp-for="ItemName" />
+            </div>
+
+            <div>
+                <label>Value: </label>
+                <input asp-for="ItemAttribute" />
+
+                <label asp-for="ItemAttributeEnum">Stat: </label>
+                <select asp-for="ItemAttributeEnum">
+                    @foreach (int enumValue in Enum.GetValues(typeof(_Attribute)))
+                    {
+                        string enumName = Enum.GetName(typeof(_Attribute), enumValue);
+                        <option value="@enumName">@enumName</option>
+                    }
+                </select>
+            </div>
+
+            <div>
+                <label>Description: </label>
+                <input asp-for="ItemDescription" />
+            </div>
+
+            <div class="text-center">
+                <input type="hidden" asp-for="ItemID" />
+                <button type="submit" asp-page-handler="UpdateItem">Update Item</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <p align="center">Item not found or invalid ID.</p>
+    }
+</body>
