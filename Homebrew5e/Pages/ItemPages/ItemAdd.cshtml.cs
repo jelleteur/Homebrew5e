@@ -38,7 +38,10 @@ namespace Homebrew5e.App.Pages.ItemPages
 
             if (userIdCookieValue != null)
             {
-
+                Response.Cookies.Append("Homebrew5e.UserId", userIdCookieValue, new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddMinutes(20)
+                });
                 userID = int.Parse(userIdCookieValue);
                 return Page();
             }

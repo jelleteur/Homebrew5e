@@ -31,7 +31,6 @@ namespace Homebrew5e.App.Pages.LoginPages
                 return RedirectToPage("/UserPages/PrivateItemPage");
             }
             else  //geen login cookie
-
             {
                 return Page();
             }

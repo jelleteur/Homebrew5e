@@ -11,8 +11,6 @@ namespace Homebrew5e.CoreTest
 	public class ItemTestRepository : IItemRepository
 	{
 		private List<ItemDTO> _items;
-
-		//string connectionstring
 		public ItemTestRepository(List<ItemDTO> items)
 		{
 			_items = items;	
@@ -45,5 +43,13 @@ namespace Homebrew5e.CoreTest
 
 			return itemDTO;
 		}
-	}
+        public void DeleteItem(int itemID)
+		{
+			throw new NotImplementedException();
+        }
+        public void UpdateItem(string name, string attribute, string description, int itemID)
+		{
+            throw new NotImplementedException();
+        }
+    }
 }

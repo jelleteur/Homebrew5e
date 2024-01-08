@@ -40,6 +40,11 @@ namespace Homebrew5e.App.Pages.UserPages
                 return Redirect("/Index");
             }
 
+            Response.Cookies.Append("Homebrew5e.UserId", userIdCookieValue, new CookieOptions
+            {
+                Expires = DateTimeOffset.Now.AddMinutes(20)
+            });
+
             ItemRepository repository = new ItemRepository();
             ItemDetails = ItemDetails.GetByID(repository, id);
 

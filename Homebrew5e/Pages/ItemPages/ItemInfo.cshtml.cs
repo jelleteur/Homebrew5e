@@ -19,6 +19,10 @@ public class ItemInfoModel : PageModel
 
         if (userIdCookieValue != null)
         {
+            Response.Cookies.Append("Homebrew5e.UserId", userIdCookieValue, new CookieOptions
+            {
+                Expires = DateTimeOffset.Now.AddMinutes(20)
+            });
             if (int.TryParse(Request.Query["id"], out int itemId))
             {
                 ItemRepository repository = new ItemRepository();

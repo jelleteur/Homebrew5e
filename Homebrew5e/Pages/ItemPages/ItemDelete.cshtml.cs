@@ -23,7 +23,11 @@ namespace Homebrew5e.App.Pages.ItemPages
 			int UserID = Convert.ToInt32(userIdCookieValue);
 			if (userIdCookieValue != null)
 			{
-				if (int.TryParse(Request.Query["id"], out int itemId))
+                Response.Cookies.Append("Homebrew5e.UserId", userIdCookieValue, new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddMinutes(20)
+                });
+                if (int.TryParse(Request.Query["id"], out int itemId))
 				{
 					ItemRepository repository = new ItemRepository();
 					ItemDetails = ItemDetails.GetByID(repository, itemId);
